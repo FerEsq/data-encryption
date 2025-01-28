@@ -125,7 +125,7 @@ def main():
             continue
         
         #Obtener texto
-        text = input("\nIngrese el texto para convertir (colocar un espacio entr cada byte): ")
+        text = input("\nIngrese el texto para convertir: ")
         
         #Validar texto
         if not text:
