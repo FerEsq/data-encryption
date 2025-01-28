@@ -61,7 +61,7 @@ Función principal que maneja la interacción con el usuario.
 def main():
     while True:
         #Imprimir menú
-        print("\n1. Convertir de ASCII a BINARIO")
+        print("\n1. Convertir de BASE64 a BINARIO")
         print("2. Salir")
         choice = input("\nSeleccione una opción (1-2): ")
         
@@ -86,7 +86,8 @@ def main():
         if choice == "1":
             b64 = textToBase64(text)
             binary = base64ToBinary(b64)
-            print(f"\nTexto en binario: {binary}")          
+            print(f"\nTexto en base64: {b64}")  
+            print(f"Texto en binario: {binary}")          
 
 if __name__ == "__main__":
     main()
