@@ -25,13 +25,13 @@ Las principales dependencias del proyecto incluyen:
 * [![GitHub][GitHub]][GitHub-fer]
 
 ## 📞 Contacto
-Si tienes preguntas o comentarios, puedes contactarnos a traves de:
+Si tienes preguntas o comentarios, puedes contactarme a traves de:
 
 * [![Website][Website]][Website-fer]
 * [![Mail][Mail]][Mail-fer]
 
 ## 📖 Ejercicio 01
-Puede consultar el README del primer ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/blob/ex/cryptography/Exercise1.md).
+Puede consultar el README del primer ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/blob/ex/cryptography/Part1.md).
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [Python]: https://img.shields.io/badge/Python-4B8BBE?style=for-the-badge&logo=python&logoColor=white
