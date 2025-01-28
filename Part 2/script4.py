@@ -7,12 +7,12 @@
     - Finalizado el 27.01.2025
 '''
 
-def byteToDecimal(byte_str):
+def byteToDecimal(byteSTR):
     decimal = 0
     potencia = 0
     
     #Iterar bits de derecha a izquierda
-    for bit in reversed(byte_str):
+    for bit in reversed(byteSTR):
         if bit == '1':
             # Calculamos 2^potencia 
             valor = 1
@@ -43,7 +43,7 @@ Función principal que maneja la interacción con el usuario.
 def main():
     while True:
         #Imprimir menú
-        print("\n1. Convertir de BINARIO a BASE64")
+        print("\n1. Convertir de BINARIO a ASCII")
         print("2. Salir")
         choice = input("\nSeleccione una opción (1-2): ")
         
