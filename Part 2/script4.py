@@ -1,5 +1,5 @@
 '''
- * Nombre: script3.py
+ * Nombre: script4.py
  * Programadora: Fernanda Esquivel (esq21542@uvg.edu.gt)
  * Lenguaje: Python
  * Recursos: VSCode
@@ -7,27 +7,35 @@
     - Finalizado el 27.01.2025
 '''
 
-base64Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+def byteToDecimal(byte_str):
+    decimal = 0
+    potencia = 0
+    
+    #Iterar bits de derecha a izquierda
+    for bit in reversed(byte_str):
+        if bit == '1':
+            # Calculamos 2^potencia 
+            valor = 1
+            for _ in range(potencia):
+                valor *= 2
+            decimal += valor
+        potencia += 1
+        
+    return decimal
 
-def binaryToBase64(binary):   
-    #Eliminar espacios entre bloques de 8 bits
-    binary = binary.replace(" ", "")
+def binaryToAscii(binary):
+    #Dividir la cadena binaria en bloques de 8 bits
+    blocks = binary.split(" ")
     
-    #Asegurarse de que el binario tenga un número de bits divisible por 6
-    while len(binary) % 6 != 0:
-        binary += "0"  #Agregar ceros al final 
+    #Convertir cada bloque de binario a decimal y luego a su carácter ASCII
+    text = ""
+    ascii = []
+    for block in blocks:
+        asciiCode = byteToDecimal(block)
+        ascii.append(asciiCode)
+        text += chr(asciiCode)
     
-    #Dividir el binario en bloques de 6 bits
-    chunks = [binary[i:i+6] for i in range(0, len(binary), 6)]
-    
-    #Convertir cada bloque a su valor decimal y mapear al carácter Base64
-    b64 = "".join(base64Chars[int(chunk, 2)] for chunk in chunks)
-    
-    #Agregar padding "=" si el número original de bits no era múltiplo de 24
-    while len(b64) % 4 != 0:
-        b64 += "="
-    
-    return b64
+    return text, ascii
 
 '''
 Función principal que maneja la interacción con el usuario.
@@ -58,8 +66,9 @@ def main():
         
         #Convertir a binario
         if choice == "1":
-            b64 = binaryToBase64(text)
-            print(f"Texto en base64: {b64}")          
+            text, ascii = binaryToAscii(text)
+            print(f"Códigos ascii de cada carácter: {ascii}")    
+            print(f"Texto en ascii: {text}")          
 
 if __name__ == "__main__":
     main()
