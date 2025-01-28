@@ -26,7 +26,7 @@ Función principal que maneja la interacción con el usuario.
 def main():
     while True:
         #Imprimir menú
-        print("\n1. Aplicar XOR a un BINARIO ")
+        print("\n1. Aplicar XOR a un BINARIO")
         print("2. Salir")
         choice = input("\nSeleccione una opción (1-2): ")
         
