@@ -30,8 +30,17 @@ Si tienes preguntas o comentarios, puedes contactarme a traves de:
 * [![Website][Website]][Website-fer]
 * [![Mail][Mail]][Mail-fer]
 
-## 📖 Ejercicio 01
+## 📖 Ejercicios
+### Parte 1
 Puede consultar el README del primer ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/blob/ex/cryptography/Part1.md).
+
+### Parte 2
+Puedes acceder a los scripts del segundo ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/ex/cryptography/Part%202).
+
+## 🤖 Uso de IA
+* Se utilizó Claude 3.5 Sonnet.
+* [Link a la conversación](https://shareclaude.pages.dev/c/hedb80c5tsv8hmicly7iakgk).
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [Python]: https://img.shields.io/badge/Python-4B8BBE?style=for-the-badge&logo=python&logoColor=white
