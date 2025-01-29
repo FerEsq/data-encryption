@@ -9,21 +9,19 @@
 
 def asciiToBinary(text):
     binary = ""
-    asciiCodes = {char: ord(char) for char in text} #Obtener el valor ASCII de cada char
-    
-    #Convertir cada valor ASCII a binario
-    for char, asciiValue in asciiCodes.items():
+
+    #Iterar sobre cada carácter del texto
+    for char in text:
+        asciiValue = ord(char)
         binaryValue = ""
         temp = asciiValue
+        
         while temp > 0:
-            binaryValue = str(temp % 2) + binaryValue  #Agregar el residuo a la izquierda
-            temp //= 2  #Reducir el número dividiendo por 2
-        
-        #Asegurar que sean 8 bits
-        binaryValue = binaryValue.zfill(8)
-        
-        #Concatenar el binario al resultado
-        binary += binaryValue + " "
+            binaryValue = str(temp % 2) + binaryValue
+            temp //= 2
+            
+        binary += binaryValue.zfill(8) + " "
+        binary = str(binary)
     
     return binary
 
