@@ -49,7 +49,7 @@ def main():
             continue
         
         #Obtener texto
-        text = input("\nIngrese el texto para convertir (colocar un espacio entr cada byte): ")
+        text = input("\nIngrese el texto para convertir (colocar un espacio entre cada bloque de bits): ")
         
         #Validar texto
         if not text:

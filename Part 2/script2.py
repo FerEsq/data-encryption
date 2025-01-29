@@ -9,26 +9,9 @@
 
 base64Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
-def textToBase64(char):
-    #Manejo de ñ y Ñ
-    byte_val = char.encode('utf-8')
-    bits = ''.join(format(b, '08b') for b in byte_val)
-    
-    #Agrupar en 6 bits
-    while len(bits) % 6:
-        bits += '0'
-    
-    b64Value = ''
-    for i in range(0, len(bits), 6):
-        chunk = bits[i:i+6]
-        index = int(chunk, 2)
-        b64Value += base64Chars[index]
-    
-    while len(b64Value) % 4:
-        b64Value += '='
-        
-    return b64Value
-
+def charToBase64(char):    
+    #Buscar el índice del carácter
+    return str(base64Chars.index(char))
 
 def base64ToBinary(b64STR):
     #Dict para mapear caracteres base64 a sus índices
@@ -84,9 +67,7 @@ def main():
         
         #Convertir a binario
         if choice == "1":
-            b64 = textToBase64(text)
-            binary = base64ToBinary(b64)
-            print(f"\nTexto en base64: {b64}")  
+            binary = base64ToBinary(text)
             print(f"Texto en binario: {binary}")          
 
 if __name__ == "__main__":
