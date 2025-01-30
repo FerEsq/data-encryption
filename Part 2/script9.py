@@ -10,7 +10,27 @@
 '''
 Key dinámica
 '''
-def dinamicKeyGenerator(key, length):    
+import random
+
+def dinamicKeyGenerator(length):
+    #Rangos ASCII para diferentes tipos de caracteres
+    uppercase = list(range(65, 91))  # A-Z
+    lowercase = list(range(97, 123))  # a-z
+    numbers = list(range(48, 58))    # 0-9
+    symbols = list(range(33, 48)) + list(range(58, 65)) + list(range(91, 97))
+    
+    #Combinar todos los rangos
+    allChars = uppercase + lowercase + numbers + symbols
+    
+    # Generar clave
+    key = ''
+    for _ in range(length):
+        ascii_value = random.choice(allChars)
+        key += chr(ascii_value)
+    
+    return key
+
+def fillKey(key, length):    
     #Si la longitud es 0, retornar string vacío
     if length == 0:
         return ""
@@ -132,22 +152,37 @@ def main():
         
         #Obtener texto
         text = input("\nIngrese el texto para encriptar: ")
-        key = input("Ingrese la key para encriptar: ")
+        keyLen = int(input("Ingrese la longitud de la key: "))
         
         #Validar texto
-        if not text or not key:
-            print("El texto o key no puede estar vacío")
+        if not text or not keyLen:
+            print("El texto o longitud no puede estar vacío")
             continue
         
         #Convertir a binario
         if choice == "1":
             lenText = len(text)
-            key = dinamicKeyGenerator(key, lenText)
-            encryptedBin = encrypt(text, key)
-            encrypted, ascii = binaryToAscii(encryptedBin)
-            print(f"\nKey dinámica: {key}")
-            print(f"Texto encriptado en binario: {encryptedBin}")
-            print(f"Texto encriptado en ASCII: {encrypted}")   
+            key = dinamicKeyGenerator(keyLen)
+            dif = lenText  - keyLen
 
+            if dif <= 0:
+                encryptedBin = encrypt(text, key)
+                encrypted, ascii = binaryToAscii(encryptedBin)
+                print(f"\nKey dinámica: {key}")
+                print(f"Texto encriptado en binario: {encryptedBin}")
+                print(f"Texto encriptado en ASCII: {encrypted}")   
+            elif dif > 0:
+                key = fillKey(key, lenText)
+                encryptedBin = encrypt(text, key)
+                encrypted, ascii = binaryToAscii(encryptedBin)
+                print(f"\nKey dinámica: {key}")
+                print(f"Texto encriptado en binario: {encryptedBin}")
+                print(f"Texto encriptado en ASCII: {encrypted}")
+
+
+
+
+
+            
 if __name__ == "__main__":
     main()
