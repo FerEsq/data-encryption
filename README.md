@@ -35,11 +35,11 @@ Si tienes preguntas o comentarios, puedes contactarme a traves de:
 Puede consultar el README del primer ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/blob/ex/cryptography/Part1.md).
 
 ### Parte 2
-Puedes acceder a los scripts del segundo ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/ex/cryptography/Part%202).
+Puedes acceder a los scripts del segundo ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/ex/cryptography/Part2).
 
 ## 🤖 Uso de IA
 * Se utilizó Claude 3.5 Sonnet.
-* [Link a la conversación](https://shareclaude.pages.dev/c/hedb80c5tsv8hmicly7iakgk).
+* [Link a la conversación](https://shareclaude.pages.dev/c/voxfmvez8ela86l4mrq68whck).
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
