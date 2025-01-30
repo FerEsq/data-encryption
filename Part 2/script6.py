@@ -40,8 +40,8 @@ def main():
             continue
         
         #Obtener texto
-        bin1 = input("\nIngrese el primer binario: ")
-        bin2 = input("Ingrese el segundo binario: ")
+        bin1 = input("\nIngrese el primer binario (sin espacios): ")
+        bin2 = input("Ingrese el segundo binario (sin espacios): ")
         
         #Validar texto
         if not bin1 or not bin2:

@@ -92,7 +92,6 @@ def binaryToAscii(binary):
     
     return text, ascii
 
-
 '''
 Función principal que maneja la interacción con el usuario.
 '''
