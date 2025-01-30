@@ -4,8 +4,26 @@
  * Lenguaje: Python
  * Recursos: VSCode
  * Historial: 
-    - Finalizado el 28.01.2025
+    - Finalizado el 30.01.2025
 '''
+
+'''
+Key dinámica
+'''
+def dinamicKeyGenerator(key, length):    
+    #Si la longitud es 0, retornar string vacío
+    if length == 0:
+        return ""
+    
+    #Calcular cuántas veces necesitamos repetir la key completa
+    repeat = length // len(key)
+    #Calcular cuántos caracteres adicionales necesitamos
+    extraChars = length % len(key)
+    
+    #Construir la key resultante
+    result = key * repeat + key[:extraChars]
+    
+    return result
 
 '''
 ASCII a Binario
@@ -92,13 +110,14 @@ def binaryToAscii(binary):
     
     return text, ascii
 
+
 '''
 Función principal que maneja la interacción con el usuario.
 '''
 def main():
     while True:
         #Imprimir menú
-        print("\n1. Encriptar texto")
+        print("\n1. Encriptar texto (key dinámica)")
         print("2. Salir")
         choice = input("\nSeleccione una opción (1-2): ")
         
@@ -119,15 +138,15 @@ def main():
         if not text or not key:
             print("El texto o key no puede estar vacío")
             continue
-        elif len(text) != len(key):
-            print("La longitud no es válida")
-            continue
         
         #Convertir a binario
         if choice == "1":
+            lenText = len(text)
+            key = dinamicKeyGenerator(key, lenText)
             encryptedBin = encrypt(text, key)
             encrypted, ascii = binaryToAscii(encryptedBin)
-            print(f"\nTexto encriptado en binario: {encryptedBin}")
+            print(f"\nKey dinámica: {key}")
+            print(f"Texto encriptado en binario: {encryptedBin}")
             print(f"Texto encriptado en ASCII: {encrypted}")   
 
 if __name__ == "__main__":
