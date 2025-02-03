@@ -1,11 +1,11 @@
 '''
- * Nombre: caesar.py
+ * Nombre: affine.py
  * Programadora: Fernanda Esquivel (esq21542@uvg.edu.gt)
  * Lenguaje: Python
  * Recursos: VSCode
  * Historial: 
-    - Creado el 30.01.2025
-    - Finalizado el 02.02.2025
+    - Creado el 03.02.2025
+    - Finalizado el 03.02.2025
 '''
 
 alphabet = "abcdefghijklmnñopqrstuvwxyz"
@@ -26,30 +26,49 @@ def cleanPlainText(text):
     
     return cleanText
 
-'''
-Encriptado y desencriptado César
-'''
-def encrypt(text):
-    encrypted = ""
-    for char in text:
-        for letter in alphabet:
-            if char == letter:
-                charIndex = alphabet.index(letter)
+def checkCoprimes(a, b):
+    def mcd(a, b):
+        #Calculo del Máximo Común Divisor usando el algoritmo de Euclides
+        while b:
+            a, b = b, a % b
+        return a
+    
+    return mcd(abs(a), abs(b)) == 1
 
-        newCharIndex = (charIndex + 3) % len(alphabet)
-        encrypted += alphabet[newCharIndex]
+def modInverse(a, m):
+    for i in range(1, m):
+        if (a * i) % m == 1:
+            return i
+        
+    return None  #No tiene inverso si no son coprimos
+
+'''
+Encriptado y desencriptado Afín
+'''
+def encrypt(text, a, b):
+    if checkCoprimes(a, len(alphabet)) != 1:
+        raise ValueError(f"El valor de 'a' debe ser coprimo con el tamaño del alfabeto ({len(alphabet)})")
+    
+    encrypted = ""
+
+    for char in text:
+        x = alphabet.index(char)
+        newIndex = (a * x + b) % len(alphabet)
+        encrypted += alphabet[newIndex]
 
     return encrypted
 
-def decrypt(text):
-    decrypted = ""
-    for char in text:
-        for letter in alphabet:
-            if char == letter:
-                charIndex = alphabet.index(letter)
+def decrypt(text, a, b):
+    a_inv = modInverse(a, len(alphabet))
+    if a_inv is None:
+        raise ValueError(F"No se puede calcular el inverso de 'a'. Debe ser coprimo con el tamaño del alfabeto ({len(alphabet)})")
 
-        newCharIndex = (charIndex - 3) % len(alphabet)
-        decrypted += alphabet[newCharIndex]
+    decrypted = ""
+
+    for char in text:
+        y = alphabet.index(char)
+        newIindex = (a_inv * (y - b)) % len(alphabet)
+        decrypted += alphabet[newIindex]
 
     return decrypted
 
@@ -76,20 +95,22 @@ def main():
         #Obtener texto
         text = input("\nIngrese el texto para encriptar: ")
         text = cleanPlainText(text)
+        a = int(input("Ingrese el valor de 'a': "))
+        b = int(input("Ingrese el valor de 'b': "))
         
         #Validar texto
-        if not text:
-            print("El texto no puede estar vacío.")
+        if not text or a == 0 or b == 0:
+            print("El texto o las claves no puede estar vacías.")
             continue
         
         #Encriptar
         if choice == "1":
-            encrypted = encrypt(text)
+            encrypted = encrypt(text, a, b)
             print(f"\nTexto encriptado: {encrypted}")
 
         #Desencriptar
         if choice == "2":
-            encrypted = decrypt(text)
+            encrypted = decrypt(text, a, b)
             print(f"\nTexto desencriptado: {encrypted}")
 
 if __name__ == "__main__":
