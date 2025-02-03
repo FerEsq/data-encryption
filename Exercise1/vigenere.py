@@ -1,5 +1,5 @@
 '''
- * Nombre: affine.py
+ * Nombre: vigenere.py
  * Programadora: Fernanda Esquivel (esq21542@uvg.edu.gt)
  * Lenguaje: Python
  * Recursos: VSCode
@@ -26,49 +26,43 @@ def cleanPlainText(text):
     
     return cleanText
 
-def checkCoprimes(a, b):
-    def mcd(a, b):
-        #Calculo del Máximo Común Divisor usando el algoritmo de Euclides
-        while b:
-            a, b = b, a % b
-        return a
+def dinamicKeyGenerator(key, length):    
+    #Si la longitud es 0, retornar string vacío
+    if length == 0:
+        return ""
     
-    return mcd(abs(a), abs(b)) == 1
-
-def modInverse(a, m):
-    for i in range(1, m):
-        if (a * i) % m == 1:
-            return i
-        
-    return None  #No tiene inverso si no son coprimos
+    #Calcular cuántas veces necesitamos repetir la key completa
+    repeat = length // len(key)
+    #Calcular cuántos caracteres adicionales necesitamos
+    extraChars = length % len(key)
+    
+    #Construir la key resultante
+    result = key * repeat + key[:extraChars]
+    
+    return result
 
 '''
 Encriptado y desencriptado Afín
 '''
-def encrypt(text, a, b):
-    if checkCoprimes(a, len(alphabet)) != 1:
-        raise ValueError(f"El valor de 'a' debe ser coprimo con el tamaño del alfabeto ({len(alphabet)})")
-    
+def encrypt(text, key):
     encrypted = ""
 
-    for char in text:
-        x = alphabet.index(char)
-        newIndex = (a * x + b) % len(alphabet)
+    for i in range(len(text)):
+        charIndex = alphabet.index(text[i])
+        keyIndex = alphabet.index(key[i])
+        newIndex = (charIndex + keyIndex) % len(alphabet)
         encrypted += alphabet[newIndex]
 
     return encrypted
 
-def decrypt(text, a, b):
-    a_inv = modInverse(a, len(alphabet))
-    if a_inv is None:
-        raise ValueError(F"No se puede calcular el inverso de 'a'. Debe ser coprimo con el tamaño del alfabeto ({len(alphabet)})")
-
+def decrypt(text, key):
     decrypted = ""
 
-    for char in text:
-        y = alphabet.index(char)
-        newIindex = (a_inv * (y - b)) % len(alphabet)
-        decrypted += alphabet[newIindex]
+    for i in range(len(text)):
+        charIndex = alphabet.index(text[i])
+        keyIndex = alphabet.index(key[i])
+        newIndex = (charIndex - keyIndex) % len(alphabet)
+        decrypted += alphabet[newIndex]
 
     return decrypted
 
@@ -95,23 +89,26 @@ def main():
         #Obtener texto
         text = input("\nIngrese el texto para encriptar: ")
         text = cleanPlainText(text)
-        a = int(input("Ingrese el valor de 'a': "))
-        b = int(input("Ingrese el valor de 'b': "))
+        key = input("Ingrese el texto para encriptar: ")
+        key = dinamicKeyGenerator(key, len(text))
+
         
         #Validar texto
-        if not text or a == 0 or b == 0:
-            print("El texto o las claves no pueden estar vacías.")
+        if not text or not key:
+            print("El texto o clave no pueden estar vacías.")
             continue
         
         #Encriptar
         if choice == "1":
-            encrypted = encrypt(text, a, b)
-            print(f"\nTexto encriptado: {encrypted}")
+            encrypted = encrypt(text, key)
+            print(f"\nLlave utilizada: {key}")
+            print(f"Texto encriptado: {encrypted}")
 
         #Desencriptar
         if choice == "2":
-            encrypted = decrypt(text, a, b)
-            print(f"\nTexto desencriptado: {encrypted}")
+            encrypted = decrypt(text, key)
+            print(f"\nLlave utilizada: {key}")
+            print(f"Texto desencriptado: {encrypted}")
 
 if __name__ == "__main__":
     main()
