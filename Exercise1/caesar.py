@@ -10,8 +10,20 @@
 
 alphabet = "abcdefghijklmnñopqrstuvwxyz"
 
-def encrypt(text):
+def cleanPlainText(text):
     text = text.lower()
+    cleanChars = []
+
+    for char in text:
+        #Verificar si el carácter es una letra
+        if char.isalpha():
+            cleanChars.append(char)
+    
+    cleanText = ''.join(cleanChars)
+    
+    return cleanText
+
+def encrypt(text):
     encrypted = ""
     for char in text:
         for letter in alphabet:
@@ -24,7 +36,6 @@ def encrypt(text):
     return encrypted
 
 def decrypt(text):
-    text = text.lower()
     decrypted = ""
     for char in text:
         for letter in alphabet:
@@ -58,6 +69,7 @@ def main():
         
         #Obtener texto
         text = input("\nIngrese el texto para encriptar: ")
+        text = cleanPlainText(text)
         
         #Validar texto
         if not text:
