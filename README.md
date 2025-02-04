@@ -30,13 +30,65 @@ Si tienes preguntas o comentarios, puedes contactarme a traves de:
 
 ## 📖 Ejercicios
 ### Ejercicio 1
-Puedes acceder a los scripts del primer ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab1/partOne).
+Puedes acceder a los scripts del primer ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab1/partA/Exercise1).
+
+#### [Cifrado César](https://github.com/FerEsq/data-encryption/blob/lab1/partA/Exercise1/caesar.py)
+**Texto plano**
+```bash
+hola mundo
+```
+**Texto cifrado**
+```bash
+krñd oxpgr
+```
+
+#### [Cifrado Afín](https://github.com/FerEsq/data-encryption/blob/lab1/partA/Exercise1/affine.py)
+**Texto plano**
+```bash
+hola mundo
+```
+**Llaves del cifrado**
+```bash
+a: 5
+b: 8
+```
+**Texto cifrado**
+```bash
+pcji ñfswc
+```
+
+#### [Cifrado Vigenère](https://github.com/FerEsq/data-encryption/blob/lab1/partA/Exercise1/vigenere.py)
+**Texto plano**
+```bash
+hola mundo
+```
+**Llave del cifrado**
+```bash
+keykeykeyk
+```
+**Texto cifrado**
+```bash
+qsjk pswhn
+```
 
 ### Ejercicio 2
-Puedes acceder a los scripts del segundo ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab1/partOne).
+Puedes acceder a los scripts del segundo ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab1/partA/Exercise2).
+
+### Ejercicio 3
+Puedes acceder a los scripts del tercer ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab1/partA/Exercise3).
+
+#### Ejemplo de comparación
+**Texto analizado**
+```bash
+hola mundo
+```
+**Comparación de distriuciones**
+
+<img src="https://github.com/FerEsq/data-encryption/blob/lab1/partA/Exercise3/comparison.png" alt="Grafica" width="600" height="auto">
 
 ## 🤖 Uso de IA
 * Se utilizó Claude 3.5 Sonnet.
+* Puede consultar la conversación haciendo clic [aquí](https://shareclaude.pages.dev/c/z0ds0kkev8w1rz7zn2bgn3fs).
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
