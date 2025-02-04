@@ -19,7 +19,7 @@ def cleanPlainText(text):
 
     for char in text:
         #Verificar si el carácter es una letra
-        if char.isalpha():
+        if char.isalpha() or char.isspace():
             cleanChars.append(char)
     
     cleanText = ''.join(cleanChars)
@@ -46,23 +46,37 @@ Encriptado y desencriptado Afín
 '''
 def encrypt(text, key):
     encrypted = ""
+    key_idx = 0
 
-    for i in range(len(text)):
-        charIndex = alphabet.index(text[i])
-        keyIndex = alphabet.index(key[i])
-        newIndex = (charIndex + keyIndex) % len(alphabet)
-        encrypted += alphabet[newIndex]
+    for char in text:
+        if char in alphabet:
+            #Encriptar solo si es una letra del alfabeto
+            charIndex = alphabet.index(char)
+            keyIndex = alphabet.index(key[key_idx])
+            newIndex = (charIndex + keyIndex) % len(alphabet)
+            encrypted += alphabet[newIndex]
+            key_idx = (key_idx + 1) % len(key) 
+        else:
+            #Mantener el carácter original si no está en el alfabeto
+            encrypted += char
 
     return encrypted
 
 def decrypt(text, key):
     decrypted = ""
+    key_idx = 0 
 
-    for i in range(len(text)):
-        charIndex = alphabet.index(text[i])
-        keyIndex = alphabet.index(key[i])
-        newIndex = (charIndex - keyIndex) % len(alphabet)
-        decrypted += alphabet[newIndex]
+    for char in text:
+        if char in alphabet:
+            #Desencriptar solo si es una letra del alfabeto
+            charIndex = alphabet.index(char)
+            keyIndex = alphabet.index(key[key_idx])
+            newIndex = (charIndex - keyIndex) % len(alphabet)
+            decrypted += alphabet[newIndex]
+            key_idx = (key_idx + 1) % len(key)
+        else:
+            #Mantener el carácter original si no está en el alfabeto
+            decrypted += char
 
     return decrypted
 
@@ -89,7 +103,7 @@ def main():
         #Obtener texto
         text = input("\nIngrese el texto para encriptar: ")
         text = cleanPlainText(text)
-        key = input("Ingrese el texto para encriptar: ")
+        key = input("Ingrese la llave para encriptar: ")
         key = dinamicKeyGenerator(key, len(text))
 
         

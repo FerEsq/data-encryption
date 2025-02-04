@@ -19,7 +19,7 @@ def cleanPlainText(text):
 
     for char in text:
         #Verificar si el carácter es una letra
-        if char.isalpha():
+        if char.isalpha() or char.isspace():
             cleanChars.append(char)
     
     cleanText = ''.join(cleanChars)
@@ -32,24 +32,28 @@ Encriptado y desencriptado César
 def encrypt(text):
     encrypted = ""
     for char in text:
-        for letter in alphabet:
-            if char == letter:
-                charIndex = alphabet.index(letter)
-
-        newCharIndex = (charIndex + 3) % len(alphabet)
-        encrypted += alphabet[newCharIndex]
+        #Si el carácter está en el alfabeto, lo encriptamos
+        if char in alphabet:
+            charIndex = alphabet.index(char)
+            newCharIndex = (charIndex + 3) % len(alphabet)
+            encrypted += alphabet[newCharIndex]
+        else:
+            #Si no está en el alfabeto, lo mantenemos igual
+            encrypted += char
 
     return encrypted
 
 def decrypt(text):
     decrypted = ""
     for char in text:
-        for letter in alphabet:
-            if char == letter:
-                charIndex = alphabet.index(letter)
-
-        newCharIndex = (charIndex - 3) % len(alphabet)
-        decrypted += alphabet[newCharIndex]
+        #Si el carácter está en el alfabeto, lo desencriptamos
+        if char in alphabet:
+            charIndex = alphabet.index(char)
+            newCharIndex = (charIndex - 3) % len(alphabet)
+            decrypted += alphabet[newCharIndex]
+        else:
+            #Si no está en el alfabeto, lo mantenemos igual
+            decrypted += char
 
     return decrypted
 

@@ -19,7 +19,7 @@ def cleanPlainText(text):
 
     for char in text:
         #Verificar si el carácter es una letra
-        if char.isalpha():
+        if char.isalpha() or char.isspace():
             cleanChars.append(char)
     
     cleanText = ''.join(cleanChars)
@@ -52,10 +52,15 @@ def encrypt(text, a, b):
     encrypted = ""
 
     for char in text:
-        x = alphabet.index(char)
-        newIndex = (a * x + b) % len(alphabet)
-        encrypted += alphabet[newIndex]
-
+        #Si el carácter está en el alfabeto, lo encriptamos
+        if char in alphabet:
+            x = alphabet.index(char)
+            newIndex = (a * x + b) % len(alphabet)
+            encrypted += alphabet[newIndex]
+        else:
+            #Si no está en el alfabeto, lo mantenemos igual
+            encrypted += char
+        
     return encrypted
 
 def decrypt(text, a, b):
@@ -66,9 +71,14 @@ def decrypt(text, a, b):
     decrypted = ""
 
     for char in text:
-        y = alphabet.index(char)
-        newIindex = (a_inv * (y - b)) % len(alphabet)
-        decrypted += alphabet[newIindex]
+        #Si el carácter está en el alfabeto, lo encriptamos
+        if char in alphabet:
+            y = alphabet.index(char)
+            newIindex = (a_inv * (y - b)) % len(alphabet)
+            decrypted += alphabet[newIindex]
+        else:
+            #Si no está en el alfabeto, lo mantenemos igual
+            encrypted += char
 
     return decrypted
 
