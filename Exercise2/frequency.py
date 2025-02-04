@@ -7,6 +7,7 @@
     - Creado el 03.02.2025
     - Finalizado el 03.02.2025
 '''
+
 from prettytable import PrettyTable
 
 alphabet = "abcdefghijklmnñopqrstuvwxyz"
@@ -27,38 +28,38 @@ def cleanPlainText(text):
     
     return cleanText
 
-# Función para mostrar los resultados de manera ordenada
-def showResults(frecuencias):
+#Función para mostrar los resultados de manera ordenada
+def showResults(frecs):
     #Ordenar por frecuencia de mayor a menor
-    frecuencies = dict(sorted(frecuencias.items(), 
+    frecuencies = dict(sorted(frecs.items(), 
                                         key=lambda x: x[1], 
                                         reverse=True))
 
     #Crear la tabla
-    tabla = PrettyTable()
-    tabla.field_names = ["Letra", "Probabilidad"]
+    table = PrettyTable()
+    table.field_names = ["Letra", "Probabilidad"]
 
     #Agregar filas con los datos
-    for letra, prob in frecuencies.items():
-        tabla.add_row([letra, f"{prob:.4f}"])
+    for letter, prob in frecuencies.items():
+        table.add_row([letter, f"{prob:.4f}"])
 
     # Imprimir la tabla
     print("Análisis de frecuencia de caracteres:")
-    print(tabla)
+    print(table)
 
 '''
 Análisis de frecuencia
 '''
-def frecuencyAnalysis(texto):
+def frecuencyAnalysis(text):
     #Crear un diccionario para almacenar las frecuencias
     frecuencies = {}
     
     #Contar el total de caracteres (excluyendo espacios y signos de puntuación)
-    totalChars = sum(1 for c in texto if c.isalpha())
+    totalChars = sum(1 for c in text if c.isalpha())
 
     for char in alphabet:
         #Contar ocurrencias de cada letra
-        count = texto.count(char)
+        count = text.count(char)
         #Calcular probabilidad (frecuencia relativa)
         prob = count / totalChars if totalChars > 0 else 0
         frecuencies[char] = prob
