@@ -120,35 +120,6 @@ def AffineBruteForce(encrypted, aRange=(1,16), bRange=(1,16)):
     
     return results[:1]
 
-def CaesarBruteForce(encrypted, maxRotation=30):
-    results = []
-    
-    #Probamos cada posible rotación hasta max_rotation
-    for rotation in range(maxRotation):
-        decrypted = ""
-        
-        for char in encrypted:
-            if char in alphabet:
-                #Encontramos la posición actual del carácter
-                current_index = alphabet.index(char)
-                #Calculamos la nueva posición aplicando la rotación
-                new_index = (current_index - rotation) % len(alphabet)
-                #Añadimos el carácter descifrado
-                decrypted += alphabet[new_index]
-            else:
-                #Mantenemos los caracteres que no están en el alfabeto
-                decrypted += char
-
-        freq = getFrecuency(decrypted)
-        distance = calculateDistance(freq, theoreticalProbs)
-
-        results.append((rotation, decrypted, distance))   
-
-    #Ordenar por distancia
-    results.sort(key=lambda x: x[2])
-    
-    return results[:1]
-
 '''
 Función principal que maneja la interacción con el usuario.
 '''
