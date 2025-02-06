@@ -4,7 +4,7 @@
  * Lenguaje: Python
  * Recursos: VSCode
  * Historial: 
-    - Creado el 04.02.2025
+    - Creado el 05.02.2025
     - Finalizado el 05.02.2025
 '''
 
@@ -62,9 +62,64 @@ def calculateDistance(observed, theoretical):
     
     return distance
 
+def checkCoprimes(a, b):
+    def mcd(a, b):
+        while b:
+            a, b = b, a % b
+        return a
+    return mcd(abs(a), abs(b)) == 1
+
+def modInverse(a, m):
+    for i in range(1, m):
+        if (a * i) % m == 1:
+            return i
+    return None
+
 '''
 Fuerza bruta
 '''
+def decriptKeys(text, a, b):
+    """
+    Intenta descifrar el texto con valores específicos de a y b.
+    """
+    try:
+        aInv = modInverse(a, len(alphabet))
+        if aInv is None:
+            return None
+        
+        decrypted = ""
+        for char in text.lower():
+            if char in alphabet:
+                y = alphabet.index(char)
+                newIndex = (aInv * (y - b)) % len(alphabet)
+                decrypted += alphabet[newIndex]
+            else:
+                decrypted += char
+        return decrypted
+    except:
+        return None
+
+def AffineBruteForce(encrypted, aRange=(1,16), bRange=(1,16)):
+    results = []
+
+    #Probamos todas las combinaciones posibles de a y b
+    for a in range(aRange[0], aRange[1] + 1):
+        # Verificamos que 'a' sea coprimo con el tamaño del alfabeto
+        if not checkCoprimes(a, len(alphabet)):
+            continue
+            
+        for b in range(bRange[0], bRange[1] + 1):
+            decrypted = decriptKeys(encrypted, a, b)
+            if decrypted is not None:
+                freq = getFrecuency(decrypted)
+                distance = calculateDistance(freq, theoreticalProbs)
+                results.append((a, b, decrypted, distance))
+
+    #Ordenar por distancia
+    results.sort(key=lambda x: x[3])
+    
+    return results[:1]
+
 def CaesarBruteForce(encrypted, maxRotation=30):
     results = []
     
@@ -75,11 +130,11 @@ def CaesarBruteForce(encrypted, maxRotation=30):
         for char in encrypted:
             if char in alphabet:
                 #Encontramos la posición actual del carácter
-                currentIndex = alphabet.index(char)
+                current_index = alphabet.index(char)
                 #Calculamos la nueva posición aplicando la rotación
-                newIndex = (currentIndex - rotation) % len(alphabet)
+                new_index = (current_index - rotation) % len(alphabet)
                 #Añadimos el carácter descifrado
-                decrypted += alphabet[newIndex]
+                decrypted += alphabet[new_index]
             else:
                 #Mantenemos los caracteres que no están en el alfabeto
                 decrypted += char
@@ -99,7 +154,7 @@ Función principal que maneja la interacción con el usuario.
 '''
 def main():
     try:
-        with open('Caesar/cipher.txt', 'r', encoding='utf-8') as archivo:
+        with open('Affine/cipher.txt', 'r', encoding='utf-8') as archivo:
             text = archivo.read()
     except FileNotFoundError:
         print("El archivo no se encontró")
@@ -109,11 +164,11 @@ def main():
     #Limpiar el texto
     text = cleanPlainText(text)
 
-    results = CaesarBruteForce(text)
+    results = AffineBruteForce(text)
 
     print("Posible texto descifrado:\n")
-    for i, (rotation, decrypted, distance) in enumerate(results, 1):
-        print(f"Rotación: {rotation}")
+    for i, (a, b, decrypted, distance) in enumerate(results, 1):
+        print(f"Claves: a={a}, b={b}")
         print(f"Distancia: {distance:.4f}")
         print("Texto descifrado:")
         print(decrypted)
