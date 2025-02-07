@@ -30,16 +30,38 @@ Si tienes preguntas o comentarios, puedes contactarme a traves de:
 
 ## 📖 Ejercicios
 ### Ejercicio 1 (Cifrado César)
-Puedes acceder a los scripts del primer ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab1/partB).
+Puedes acceder a los scripts del primer ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab1/partB/Caesar).
+#### Resultados
+```bash
+Rotación: 23
+Distancia: 0.3049
+Texto descifrado:
+nnuestrolaberintodigitalenconstanteevolucionlaagilidadcriptograficacriptoagilidadparaabreviaresunmecanismodedefensacrucialosbrindalacapacidaddemodificarrapidamenteelusodealgoritmosyclavescriptograficosunaaccionnecesariaparaanticiparnosalasfuturasamenazasdeciberseguridad
+```
 
 ### Ejercicio 2 (Cifrado Afín)
-Puedes acceder a los scripts del segundo ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab1/partB).
+Puedes acceder a los scripts del segundo ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab1/partB/Affine).
+#### Resultados
+```bash
+Claves: a=5, b=15
+Distancia: 0.1642
+Texto descifrado:
+nejemplodelanecesidaddecriptoagilidadsepuedeextraerdelosataqueseartbleedugdelerrorrevelounadebilidadcrucialquepermitioalosatacantesleerlamemoriademilesdesistemasyrobarinformacionvaliosaasempresasquelograronrecuperarserapidamentefueronlasquedemostraroncriptoagilidadreemplazandorapidamentesusclavescriptograficasyalgoritmoscomprometidosporotrosnuevosysegurossteincidentesirvecomounclaroejemplodelaimportanciadelacriptoagilidadennuestrabatallacontinuacontralasamenazasdinamicasdeciberseguridad
+```
 
 ### Ejercicio 3 (Cifrado Vigenère)
-Puedes acceder a los scripts del segundo ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab1/partB).
+Puedes acceder a los scripts del segundo ejercicio haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab1/partB/Vigenere).
+#### Resultados
+```bash
+Clave: payaso
+Distancia: 0.1826
+Texto descifrado:
+aunqueelerrorheartbleedsehasolucionadosiemprehayunanuevaamenazaenelhorizontehoylacuanticaesesaamenazaquepuedeatravesartodasnuestrasdefensasantesdequetodoesteperdidodebemosadoptarlacriptoagilidadparadefendernosdisponibleenlasprincipalessolucionesdecriptografiaposcuanticapqcdelaactualidadlaevidenciadelaamenazainminentedelacomputacioncuanticayaestaaquiespecialmentecontecnicascomostorenowdecryptlatersndlqueyaestanenjuegosndlesunmetodoenelqueserobandatoscifradosysealmacenanhastaquelospiratasinformaticospuedandescifrarlosmastardeconunacomputadoracuanticaestosignificaunaamenazainminentelosdatoscifradossegonlosestandaresactualesperoalmacenadosparaundescifradofuturoestaranenriesgoyaquelascomputadorascuanticaseventualmenteromperanlosmetodosdecifradoactualesporlotantosndlesunabombadetiempoyunclarorecordatoriodelaurgenciadeactualizarnuestrosmetodosdecifradoparaqueseansegurosparalacomputacioncuanticaelenfoquepqcabordalanecesidaddecriptoagilidadconvulnerabilidadescomosndlquepresentanunpeligroclaroypresenteahoraeselmomentodedarunsaltocuanticoennuestracriptografia
+```
 
 ## 🤖 Uso de IA
 * Se utilizó Claude 3.5 Sonnet.
+* Puede consultar la conversación haciendo clic [aquí](https://shareclaude.pages.dev/c/z1obhg4w4xrrco1f7lnesyya).
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
