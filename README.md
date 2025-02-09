@@ -45,6 +45,39 @@ Texto en binario: 01001101 01110101 01101110 01100100 01101111
 Valores ASCII: 77, 117, 110, 100, 111
 ```
 
+## 📖 Ejercicios
+### Ejercicio 1
+Puede consultar el código haciendo clic [aquí](https://github.com/FerEsq/data-encryption/blob/lab2/partA/script1.py).
+```bash
+Ingrese el texto para convertir: Hola
+
+Texto en binario: 01001000 01101111 01101100 01100001
+Valores ASCII: 72, 111, 108, 97
+```
+
+```bash
+Ingrese el texto para convertir: Mundo
+
+Texto en binario: 01001101 01110101 01101110 01100100 01101111
+Valores ASCII: 77, 117, 110, 100, 111
+```
+
+### Ejercicio 2
+Puede consultar el código haciendo clic [aquí](https://github.com/FerEsq/data-encryption/blob/lab2/partA/script2.py).
+```bash
+Ingrese el binario para convertir: 01001000 01101111 01101100 01100001
+
+Valores ASCII: 72, 111, 108, 97
+Texto en ascii: Hola
+```
+
+```bash
+Ingrese el binario para convertir: 01001101 01110101 01101110 01100100 01101111
+
+Valores ASCII: 77, 117, 110, 100, 111
+Texto en ascii: Mundo
+```
+
 ## 🤖 Uso de IA
 * Se utilizó Claude 3.5 Sonnet.
 <!-- * Puede consultar la conversación haciendo clic [aquí](https://shareclaude.pages.dev/c/z1obhg4w4xrrco1f7lnesyya). -->
