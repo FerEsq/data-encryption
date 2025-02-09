@@ -92,9 +92,25 @@ Texto en binario: 01001101 01110101 01101110 01100100 01101111
 Texto en ascii: Mundo
 ```
 
+### Ejercicio 5
+Puede consultar el código haciendo clic [aquí](https://github.com/FerEsq/data-encryption/blob/lab2/partA/script5.py).
+```bash
+Ingrese el primer binario (sin espacios): 0100110101110101011011100110010001101111 #Mundo
+Ingrese el segundo binario (sin espacios): 01001000011011110110110001100001 #Hola
+
+XOR de los binarios: 0100110100111101000000010000100000001110
+```
+
+```bash
+Ingrese el primer binario (sin espacios): 0100100001100101011011000110110001101111 #Hello
+Ingrese el segundo binario key (sin espacios): 0101011101101111011100100110110001100100 #World
+
+XOR de los binarios: 0001111100001010000111100000000000001011
+```
+
 ## 🤖 Uso de IA
 * Se utilizó Claude 3.5 Sonnet.
-<!-- * Puede consultar la conversación haciendo clic [aquí](https://shareclaude.pages.dev/c/z1obhg4w4xrrco1f7lnesyya). -->
+* Puede consultar la conversación haciendo clic [aquí](https://shareclaude.pages.dev/c/j2xvrih9qq62ml5y1a7b8cmw).
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
