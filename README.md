@@ -30,7 +30,20 @@ Si tienes preguntas o comentarios, puedes contactarme a traves de:
 * [![Mail][Mail]][Mail-fer]
 
 ## 📖 Ejercicios
-### En proceso...
+### Ejercicio 1
+```bash
+Ingrese el texto para convertir: Hola
+
+Texto en binario: 01001000 01101111 01101100 01100001
+Valores ASCII: 72, 111, 108, 97
+```
+
+```bash
+Ingrese el texto para convertir: Mundo
+
+Texto en binario: 01001101 01110101 01101110 01100100 01101111
+Valores ASCII: 77, 117, 110, 100, 111
+```
 
 ## 🤖 Uso de IA
 * Se utilizó Claude 3.5 Sonnet.
