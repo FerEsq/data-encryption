@@ -76,6 +76,22 @@ Ingrese el texto para convertir: Mundo
 Texto en base64: TXVuZG8=
 ```
 
+### Ejercicio 4
+Puede consultar el código haciendo clic [aquí](https://github.com/FerEsq/data-encryption/blob/lab2/partA/script4.py).
+```bash
+Ingrese el texto para convertir: SG9sYQ==
+
+Texto en binario: 01001000 01101111 01101100 01100001
+Texto en ascii: Hola
+```
+
+```bash
+Ingrese el texto para convertir: TXVuZG8=
+
+Texto en binario: 01001101 01110101 01101110 01100100 01101111
+Texto en ascii: Mundo
+```
+
 ## 🤖 Uso de IA
 * Se utilizó Claude 3.5 Sonnet.
 <!-- * Puede consultar la conversación haciendo clic [aquí](https://shareclaude.pages.dev/c/z1obhg4w4xrrco1f7lnesyya). -->

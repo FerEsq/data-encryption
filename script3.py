@@ -1,6 +1,6 @@
 '''
- * Nombre: script2.py
- * Descripción: Función que convierte bytes en caracteres ASCII (8 bits por carácter).
+ * Nombre: script3.py
+ * Descripción: Funciones para convertir texto a Base64 manualmente.
  * Programadora: Fernanda Esquivel (esq21542@uvg.edu.gt)
  * Lenguaje: Python
  * Recursos: VSCode
