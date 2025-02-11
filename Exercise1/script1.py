@@ -19,28 +19,20 @@ base64Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 Funciones auxiliares
 '''
 def base64ToBinary(b64STR):
-    #Dict para mapear caracteres base64 a sus índices
-    base64Index = {char: index for index, char in enumerate(base64Chars)}
-    
-    #Eliminar padding si existe
+    # Agregar verificación de padding antes de eliminarlo
+    padding_length = b64STR.count('=')
     b64STR = b64STR.rstrip('=')
     
-    #Convertir cada carácter base64 a su binario de 6 bits
     binary = ''
     for char in b64STR:
-        if char in base64Index:
-            #Obtener el índice del carácter en la tabla base64
-            index = base64Index[char]
+        if char in base64Chars:
+            index = base64Chars.index(char)
+            binary += format(index, '06b')  # Usar format es más seguro
             
-            #Convertir el índice a binario
-            bits = ''
-            num = index
-            for _ in range(6):
-                bits = ('1' if num & 1 else '0') + bits 
-                num >>= 1
-            
-            binary += bits
-            
+    # Ajustar longitud según el padding
+    if padding_length > 0:
+        binary = binary[:-padding_length * 2]
+        
     return binary
 
 def textToBinary(text):
@@ -81,23 +73,21 @@ def binaryToBase64(binary):
     
     return b64
 
+def completeBinary(binary, length):
+    #Si el binario es más largo que target_length, lo cortamos
+    if len(binary) > length:
+        return binary[:length]
+    
+    #Si el binario es más corto, lo repetimos
+    repetitions = length // len(binary) + 1
+    repeated = binary * repetitions
+    
+    # Cortamos al tamaño exacto
+    return repeated[:length]
+
 '''
 Imagen a B64
 '''
-def imageToB64(imagepath):
-    #Abrir la imagen usando Pillow
-    img = Image.open(imagepath)
-    
-    #Convertir la imagen a un array de bytes usando BytesIO
-    buffer = BytesIO()
-    img.save(buffer, format=img.format or 'PNG')
-    imgBytes = buffer.getvalue()
-    
-    #Convertir los bytes a base64
-    base64String = base64.b64encode(imgBytes).decode('utf-8')
-    
-    return base64String
-
 def fileToBytes(filepath):
     try:
         with open(filepath, 'rb') as f:
@@ -133,7 +123,6 @@ def xorBinary(bin1, bin2):
 Base64 a Imagen
 '''
 def b64ToImage(b64Str, outputPath):
-    """Intenta convertir un string base64 a imagen"""
     try:
         image_bytes = base64.b64decode(b64Str)
         with open(outputPath, 'wb') as f:
@@ -143,7 +132,6 @@ def b64ToImage(b64Str, outputPath):
         print(f"Error guardando imagen: {e}")
         return False
 
-
 '''
 Función principal que maneja la interacción con el usuario.
 '''
@@ -152,20 +140,22 @@ def main():
     imgBytes = fileToBytes("Exercise1/imagen_xor.png")
     imgb64 = bytesToB64(imgBytes)
 
+    #Convertir imagen a binario
+    imgbin = base64ToBinary(imgb64)
+
     #Convertir llave a binario
     binaryKey = textToBinary("cifrados_2025")
+    binaryKey = completeBinary(binaryKey, len(imgbin))
 
     #XOR de los binarios
-    xor = xorBinary(imgb64, binaryKey)
+    xor = xorBinary(imgbin, binaryKey)
 
     #Convertir el resultado a base64
     result = binaryToBase64(xor)
 
     #Crear imagen a partir del resultado
-    flag = b64ToImage(result, "Exercise1/xor_result.jpg")
+    flag = b64ToImage(result, "Exercise1/xor_result.png")
     print("\nImagen guardada como xor_result.jpg")
-
-
 
 if __name__ == "__main__":
     main()
