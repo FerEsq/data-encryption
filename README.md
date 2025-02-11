@@ -33,6 +33,15 @@ Si tienes preguntas o comentarios, puedes contactarme a traves de:
 ### Ejercicio 1
 Puede consultar el código haciendo clic [aquí](https://github.com/FerEsq/data-encryption/blob/lab2/partB/Exercise1).
 
+### Ejercicio 2
+#### ¿Porque al aplicar XOR con una llave de texto a una imagen esta se corrompe?
+La corrupción de una imagen al aplicar XOR con una clave de texto ocurre principalmente porque esta operación modifica indiscriminadamente todos los bytes del archivo, incluyendo los encabezados críticos que definen el formato y estructura de la imagen. Los visualizadores de imágenes ya no pueden interpretar correctamente el archivo porque su estructura fundamental ha sido alterada.
+
+Además, mientras que el texto utiliza un rango limitado de valores de bytes (ASCII o UTF-8), las imágenes utilizan todo el rango posible (0-255) para representar colores y otra información. Esta diferencia hace que la operación XOR genere valores que rompen las relaciones necesarias entre bytes consecutivos que representan los datos de la imagen, resultando en una corrupción del archivo.
+
+#### Referencias
+1. Khan Academy. (s. f.). https://es.khanacademy.org/computing/computer-science/cryptography/ciphers/a/xor-bitwise-operation
+
 
 ## 🤖 Uso de IA
 * Se utilizó Claude 3.5 Sonnet.
