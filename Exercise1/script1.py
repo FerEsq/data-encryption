@@ -155,7 +155,7 @@ def main():
 
     #Crear imagen a partir del resultado
     flag = b64ToImage(result, "Exercise1/xor_result.png")
-    print("\nImagen guardada como xor_result.jpg")
+    print("\nImagen guardada como 'Exercise1/xor_result.png'")
 
 if __name__ == "__main__":
     main()
