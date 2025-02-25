@@ -1,6 +1,6 @@
 '''
- * Nombre: encryption.py
- * Descripción: Programa que encripta un mensaje cifrado.
+ * Nombre: decryption.py
+ * Descripción: Programa que desencripta un mensaje cifrado.
  * Programadora: Fernanda Esquivel (esq21542@uvg.edu.gt)
  * Lenguaje: Python
  * Recursos: VSCode
@@ -91,7 +91,7 @@ Función principal que maneja la interacción con el usuario.
 def main():
     while True:
         #Imprimir menú
-        print("\n1. Encriptar mensaje")
+        print("\n1. Desencriptar mensaje")
         print("2. Salir")
         choice = input("\nSeleccione una opción (1-2): ")
         
@@ -105,26 +105,23 @@ def main():
             continue
         
         #Obtener texto
-        text = input("\nIngrese el texto a cifrar: ")
-        seed = input("Ingrese la contraseña (seed): ")
+        text = input("\nIngrese el texto a descifrar: ")
+        keystream = input("Ingrese el keystream: ")
         
         #Validar texto
-        if not text or not seed:
+        if not text or not keystream:
             print("El texto o seed no puede estar vacío")
             continue
         
         #Cifrar
         if choice == "1":            
-            #Genera un keystream de la misma longitud que el mensaje
-            stream = keystreamGenerator(len(text), seed)
 
             bin1 = stringToBinary(text)
-            bin2 = stringToBinary(stream)
+            bin2 = stringToBinary(keystream)
             xor = xorBinary(bin1, bin2)
-            encryptedText = binaryToString(xor)
+            decryptedText = binaryToString(xor)
 
-            print(f"\nKeystream generado: {stream}")  
-            print(f"Texto cifrado: {encryptedText}")
+            print(f"\nTexto descifrado: {decryptedText}")
 
 if __name__ == "__main__":
     main()
