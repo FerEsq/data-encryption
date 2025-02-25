@@ -86,6 +86,17 @@ def binaryToString(binary):
     return text
 
 '''
+Desencriptar mensaje
+'''
+def decryptMessage(text, keystream):
+    bin1 = stringToBinary(text)
+    bin2 = stringToBinary(keystream)
+
+    xor = xorBinary(bin1, bin2)
+
+    return binaryToString(xor)
+
+'''
 Función principal que maneja la interacción con el usuario.
 '''
 def main():
@@ -114,12 +125,8 @@ def main():
             continue
         
         #Cifrar
-        if choice == "1":            
-
-            bin1 = stringToBinary(text)
-            bin2 = stringToBinary(keystream)
-            xor = xorBinary(bin1, bin2)
-            decryptedText = binaryToString(xor)
+        if choice == "1":
+            decryptedText = decryptMessage(text, keystream)
 
             print(f"\nTexto descifrado: {decryptedText}")
 

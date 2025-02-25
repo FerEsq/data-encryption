@@ -86,6 +86,21 @@ def binaryToString(binary):
     return text
 
 '''
+Encriptar mensaje
+'''
+def encryptMessage(text, seed):
+    #Genera un keystream de la misma longitud que el mensaje
+    stream = keystreamGenerator(len(text), seed)
+
+    bin1 = stringToBinary(text)
+    bin2 = stringToBinary(stream)
+    xor = xorBinary(bin1, bin2)
+    encryptedText = binaryToString(xor)
+
+    return encryptedText, stream
+
+
+'''
 Función principal que maneja la interacción con el usuario.
 '''
 def main():
@@ -115,15 +130,9 @@ def main():
         
         #Cifrar
         if choice == "1":            
-            #Genera un keystream de la misma longitud que el mensaje
-            stream = keystreamGenerator(len(text), seed)
+            encryptedText, keystream = encryptMessage(text, seed)
 
-            bin1 = stringToBinary(text)
-            bin2 = stringToBinary(stream)
-            xor = xorBinary(bin1, bin2)
-            encryptedText = binaryToString(xor)
-
-            print(f"\nKeystream generado: {stream}")  
+            print(f"\nKeystream generado: {keystream}")  
             print(f"Texto cifrado: {encryptedText}")
 
 if __name__ == "__main__":
