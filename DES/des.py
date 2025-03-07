@@ -89,11 +89,39 @@ def decryptDES(ciphertext, key):
     
     return result
 
+
+def readFile(filePath):
+    try:
+        with open(filePath, 'r', encoding='utf-8') as archivo:
+            contenido = archivo.read()
+        return contenido
+    except FileNotFoundError:
+        print(f"Error: El archivo '{filePath}' no existe.")
+        raise
+    except PermissionError:
+        print(f"Error: No tienes permisos para leer el archivo '{filePath}'.")
+        raise
+    except Exception as e:
+        print(f"Error inesperado al leer el archivo: {e}")
+        raise
+
+def writeFile(text, filePath):
+    try:
+        with open(filePath, 'w', encoding='utf-8') as archivo:
+            archivo.write(text)
+        return True
+    except PermissionError:
+        print(f"Error: No tienes permisos para escribir en el archivo '{filePath}'.")
+        raise
+    except Exception as e:
+        print(f"Error inesperado al escribir en el archivo: {e}")
+        raise
+
 # Ejemplo de uso
 def main():
     while True:
         #Imprimir menú
-        print("\n1. Desencriptar mensaje")
+        print("\n1. Encriptar mensaje")
         print("2. Desencriptar mensaje")
         print("3. Salir")
         choice = input("\nSeleccione una opción (1-3): ")
@@ -107,24 +135,20 @@ def main():
             print("Opción no válida.")
             continue
         
-        #Obtener texto
-        text = input("\nIngrese el texto a cifrar/descifrar: ")
-        
-        #Validar texto
-        if not text:
-            print("El texto no puede estar vacío.")
-            continue
-        
         #Cifrar
         if choice == "1":
+            text = readFile("DES/message.txt")
             genKey = generateKey()
             encryptedText, key = encryptDES(text, genKey)
 
-            print(f"\nTexto cifrado: {encryptedText}")
+            writeFile(encryptedText, "DES/decrypt.txt")
+
+            print(f"\nTexto cifrado guardado en 'DES/encrypt.txt': {encryptedText}")
             print(f"Llave generada: {key}")
             
         #Descifrar
         elif choice == "2":
+            text = readFile("DES/decrypt.txt")
             key = input("Ingrese la llave: ")
             #Validar texto
             if not key:
@@ -132,7 +156,7 @@ def main():
                 continue
 
             decryptedText = decryptDES(text, key)
-            print(f"\nTexto descifrado: {decryptedText}")
+            print(f"\nTexto descifrado guardado en 'DES/decrypt.txt': {decryptedText}")
 
 if __name__ == "__main__":
     main()
