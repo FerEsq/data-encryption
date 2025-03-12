@@ -117,7 +117,6 @@ def writeFile(text, filePath):
         print(f"Error inesperado al escribir en el archivo: {e}")
         raise
 
-# Ejemplo de uso
 def main():
     while True:
         #Imprimir menú
@@ -141,14 +140,14 @@ def main():
             genKey = generateKey()
             encryptedText, key = encryptDES(text, genKey)
 
-            writeFile(encryptedText, "DES/decrypt.txt")
+            writeFile(encryptedText, "DES/encrypted.txt")
 
-            print(f"\nTexto cifrado guardado en 'DES/encrypt.txt': {encryptedText}")
+            print(f"\nTexto cifrado guardado en 'DES/encrypted.txt': {encryptedText}")
             print(f"Llave generada: {key}")
             
         #Descifrar
         elif choice == "2":
-            text = readFile("DES/decrypt.txt")
+            text = readFile("DES/encrypted.txt")
             key = input("Ingrese la llave: ")
             #Validar texto
             if not key:
@@ -156,7 +155,10 @@ def main():
                 continue
 
             decryptedText = decryptDES(text, key)
-            print(f"\nTexto descifrado guardado en 'DES/decrypt.txt': {decryptedText}")
+
+            writeFile(decryptedText, "DES/decrypted.txt")
+
+            print(f"\nTexto descifrado guardado en 'DES/decrypted.txt': {decryptedText}")
 
 if __name__ == "__main__":
     main()
