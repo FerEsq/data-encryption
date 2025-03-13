@@ -7,6 +7,7 @@
  * Historial:
     - Creado el 12.03.2025
     - Finalizado el 12.03.2025
+    - Simplificado para ingreso manual de llave e IV
 '''
 
 from Crypto.Cipher import DES3
@@ -58,19 +59,49 @@ def decrypt3des(ciphertextHex, keyHex, ivHex):
         # Descifrar los datos
         padded_plaintext = cipher.decrypt(ciphertext)
         
-        #Eliminar pading
-        plaintext = unpad(padded_plaintext, DES3.block_size)
+        #Eliminar padding
+        try:
+            plaintext = unpad(padded_plaintext, DES3.block_size)
+        except ValueError as e:
+            print(f"Advertencia: Error al eliminar el padding: {e}")
+            print("Intentando recuperar el texto sin eliminar el padding...")
+            plaintext = padded_plaintext
         
-        #Convertir de bytes a cadena
-        decrytptedText = plaintext.decode('utf-8')
+        # Intentar decodificar con UTF-8
+        try:
+            decryptedText = plaintext.decode('utf-8')
+        except UnicodeDecodeError:
+            # Si falla la decodificación, usar 'replace' para sustituir caracteres inválidos
+            decryptedText = plaintext.decode('utf-8', errors='replace')
         
-        return decrytptedText
+        return decryptedText
     except binascii.Error as e:
         print(f"Error al procesar datos hexadecimales: {e}")
         return None
     except Exception as e:
         print(f"Error al descifrar: {e}")
         return None
+
+def readFile(filePath):
+    try:
+        with open(filePath, 'r', encoding='utf-8') as archivo:
+            contenido = archivo.read()
+        return contenido
+    except FileNotFoundError:
+        print(f"Error: El archivo '{filePath}' no existe.")
+        return None
+    except Exception as e:
+        print(f"Error al leer el archivo: {e}")
+        return None
+
+def writeFile(text, filePath):
+    try:
+        with open(filePath, 'w', encoding='utf-8') as archivo:
+            archivo.write(text)
+        return True
+    except Exception as e:
+        print(f"Error al escribir en el archivo: {e}")
+        return False
 
 def main():
     while True:
@@ -89,37 +120,60 @@ def main():
             print("Opción no válida.")
             continue
 
-        text = input("Ingrese el texto a cifrar/decifrar: ")
-
-        #Validar texto
-        if not text:
-            print("El texto no puede estar vacío.")
-            continue
-
-        
         #Cifrar
         if choice == "1":
+            #Leer el archivo
+            text = readFile("3DES\message.txt")
+            if text is None:
+                continue
+            
+            #Generar llave y IV
             genKey = generateKey()
             iv = generateIV()
-            encryptedText, key, iv_hex = encrypt3des(text, genKey, iv)
-
-            print(f"\nTexto cifrado: {encryptedText}")
-            print(f"Llave generada: {key}")
-            print(f"Vector de inicialización (IV): {iv_hex}")  # Mostrar también el IV
+            
+            #Cifrar el texto
+            encryptedText, keyHex, ivHex = encrypt3des(text, genKey, iv)
+            
+            #Guardar el texto cifrado
+            outputPath = "3DES\decrypted.txt"
+            
+            if writeFile(encryptedText, outputPath):
+                print(f"\nTexto cifrado guardado en '{outputPath}'")
+                
+                #Mostrar la llave y el IV
+                print(f"\nLlave (KEY): {keyHex}")
+                print(f"Vector de inicialización (IV): {ivHex}")
             
         #Descifrar
         elif choice == "2":
-            key = input("Ingrese la llave: ")
-            iv = input("Ingrese el vector de inicialización (IV): ")
+            #Pedir la ruta del archivo cifrado
+            inputFile = "3DES\decrypted.txt"
             
-            #Validar texto
-            if not key or not iv:
+            #Leer el archivo cifrado
+            encryptedText = readFile(inputFile)
+            if encryptedText is None:
+                continue
+            
+            #Pedir la llave y el IV manualmente
+            keyHex = input("Ingrese la llave (KEY): ")
+            ivHex = input("Ingrese el vector de inicialización (IV): ")
+            
+            #Validar entradas
+            if not keyHex or not ivHex:
                 print("La llave y el IV no pueden estar vacíos.")
                 continue
-
-            decryptedText = decrypt3des(text, key, iv)
+            
+            #Descifrar
+            decryptedText = decrypt3des(encryptedText, keyHex, ivHex)
             if decryptedText:
-                print(f"\nTexto descifrado: {decryptedText}")
+                #Guardar el resultado
+                outputPath = "3DES\decrypted.txt"
+                
+                if writeFile(decryptedText, outputPath):
+                    print(f"\nTexto descifrado guardado en '{outputPath}': \n{decryptedText}")
+                    
+            else:
+                print("No se pudo descifrar el texto.")
 
 if __name__ == "__main__":
     main()
