@@ -7,7 +7,6 @@
  * Historial:
     - Creado el 12.03.2025
     - Finalizado el 12.03.2025
-    - Simplificado para ingreso manual de llave e IV
 '''
 
 from Crypto.Cipher import DES3
