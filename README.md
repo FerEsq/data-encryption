@@ -34,7 +34,6 @@ Si tienes preguntas o comentarios, puedes contactarme a traves de:
 
 ### 1️⃣ Rompiendo ECB en Imágenes
 Puedes acceder al script de la parte 1 haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab3/partA/Part1).
-
 #### Imagen original
 <img width='300' src="https://github.com/FerEsq/data-encryption/blob/lab3/partA/Part1/decrypted.png" alt="Result" />
 
@@ -54,6 +53,16 @@ Puedes acceder al script de la parte 1 haciendo clic [aquí](https://github.com/
 
 ### 2️⃣ Capturando Cifrado en Red con Wireshark
 Puedes acceder al script de la parte 2 haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab3/partA/Part2).
+#### Evidencia
+<img width='600' src="https://github.com/user-attachments/assets/3fd37228-a513-4f29-acfa-daeb8cfb5927" alt="Evidence" />
+<img width='600' src="https://github.com/user-attachments/assets/2ce34b2a-d50e-4266-aad1-de48506b52b1" alt="Evidence" />
+
+#### Preguntas para reflexión
+##### ¿Se puede identificar que los mensajes están cifrados con AES-CBC?
+* No, no es posible identificar directamente desde la captura en Wireshark que se está utilizando AES-CBC.
+* La captura muestra datos cifrados (visible en la sección de bytes del paquete 79930), pero el algoritmo de cifrado específico no es detectable desde el análisis de paquetes. 
+##### ¿Cómo podríamos proteger más esta comunicación?
+* Yo recomendaría utilizar firmas digitales para verificar la autenticidad, implementar rotación periódica de claves, utilizar vectores de inicialización aleatorios únicos para cada mensaje y considerar la migración a AES-GCM que proporciona autenticación incorporada.
 
 ### 3️⃣ Implementando un Cifrado de Flujo con ChaCha20
 Puedes acceder al script de la parte 3 haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab3/partA/Part3).
