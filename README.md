@@ -67,6 +67,16 @@ Puedes acceder al script de la parte 2 haciendo clic [aquí](https://github.com/
 ### 3️⃣ Implementando un Cifrado de Flujo con ChaCha20
 Puedes acceder al script de la parte 3 haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab3/partA/Part3).
 
+#### Resultados
+<img width='600' src="https://github.com/FerEsq/data-encryption/blob/lab3/partA/Part3/comparationResults.png" alt="Results" />
+
+#### Preguntas para reflexión
+##### ¿Analizar que cifrado es mas rápido ChaCha20 o AES?
+* Según los gráficos, AES (en modo CTR/CBC) es consistentemente más rápido que ChaCha20 tanto en cifrado como en descifrado, con una diferencia notable en el cifrado y mínima en el descifrado.
+* AES también muestra un mejor rendimiento en consumo de memoria, utilizando aproximadamente 20% menos memoria que ChaCha20 para procesar el mismo volumen de datos.
+##### ¿En qué casos debería usarse en vez de AES?
+* ChaCha20 debería usarse en entornos donde no haya aceleración por hardware para AES, cuando se necesite resistencia a ataques de sincronización, en aplicaciones con restricciones de energía pero no de memoria, o cuando se requiera un algoritmo más simple para implementación en software puro.
+
 ### 4️⃣ Implementación de un Ransomware Simulado
 Puedes acceder al script de la parte 4 haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab3/partA/Part4).
 
