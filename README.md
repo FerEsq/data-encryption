@@ -80,6 +80,20 @@ Puedes acceder al script de la parte 3 haciendo clic [aquí](https://github.com/
 ### 4️⃣ Implementación de un Ransomware Simulado
 Puedes acceder al script de la parte 4 haciendo clic [aquí](https://github.com/FerEsq/data-encryption/tree/lab3/partA/Part4).
 
+#### Preguntas para reflexión
+##### ¿Cómo podríamos evitar ataques de ransomware?
+* Para evitar ataques de ransomware, es crucial implementar una estrategia de defensa en profundidad que incluya:
+  * Copias de seguridad regulares almacenadas fuera de línea
+  * Actualizaciones constantes de sistemas operativos y aplicaciones
+  * Uso de software antimalware actualizado
+  * Implementación de políticas de privilegios mínimos
+  * Capacitación de usuarios para identificar intentos de phishing y enlaces sospechosos
+  * Filtrado de correos electrónicos y bloqueo preventivo de dominios maliciosos.
+* Además, es necesario tener algún plan de respuesta a incidentes bien definido con el fin de tener una reacción rápida y efectiva en caso de un ataque exitoso.
+##### ¿Qué tan importante es almacenar claves de manera segura?
+* El almacenamiento seguro de claves criptográficas es importante en la seguridad de la información, ya que estas claves son el fundamento de casi todos los sistemas de protección de datos.
+* Una clave comprometida invalida inmediatamente cualquier mecanismo de cifrado, sin importar cuán avanzado sea. 
+
 <!-- MARKDOWN LINKS & IMAGES -->
 [Python]: https://img.shields.io/badge/Python-4B8BBE?style=for-the-badge&logo=python&logoColor=white
 [Python-url]: https://www.python.org
