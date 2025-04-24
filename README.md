@@ -43,18 +43,23 @@ Si tienes preguntas o comentarios, puedes contactarme a traves de:
 * [![Mail][Mail]][Mail-fer]
 
 ## 📖 Documentación
-Puedes acceder a la documentación detallada del proyecto (scripts/comandos elaborados y su utilización) [aquí](https://gelatinous-fright-b4b.notion.site/Proyecto-1-1dfec7349a15802eb829facf9d3505fa).
+
+### Scripts y Comandos
+Puedes acceder a la documentación detallada del proyecto (scripts/comandos elaborados y su utilización) haciendo clic [aquí](https://gelatinous-fright-b4b.notion.site/Proyecto-1-1dfec7349a15802eb829facf9d3505fa).
+
+### Reporte
+Puedes acceder al reporte del proyecto haciendo clic [aquí](https://github.com/FerEsq/data-encryption/blob/project/one/Reporte.pdf).
 
 ## 🖇️ Resultados
 
 ### Flags
-Puedes acceder al archivo de texto que contiene las banderas encontradas [aquí](https://github.com/FerEsq/data-encryption/blob/project/one/flags.txt).
+Puedes acceder al archivo de texto que contiene las banderas encontradas haciendo clic [aquí](https://github.com/FerEsq/data-encryption/blob/project/one/flags.txt).
 
 ### Poneglyphs
-Puedes acceder al archivo de texto que contiene los párrafos encontrados [aquí](https://github.com/FerEsq/data-encryption/blob/project/one/poneglyphs.txt).
+Puedes acceder al archivo de texto que contiene los párrafos encontrados haciendo clic [aquí](https://github.com/FerEsq/data-encryption/blob/project/one/poneglyphs.txt).
 
 ## 💻 Repositorio Original
-Puedes acceder al repositorio original del proyecto [aquí](https://github.com/locano-uvg/ctf_onepice_symmetric_cipher.git).
+Puedes acceder al repositorio original del proyecto haciendo clic [aquí](https://github.com/locano-uvg/ctf_onepice_symmetric_cipher.git).
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
